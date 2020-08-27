@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block title %}
+DoctorSmiling - Update
+{% endblock title %}
+{% block body %}
+<h3>Update Questions</h3>
+<p></p>
+<p></p>
+<form method="POST">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Tests</label>
+        <select id="cars" class="form-control" name='d_kind' required>
+            <option value="A1" name='d_kind'>A1</option>
+            <option value="A2" name='d_kind'>A2</option>
+            <option value="B1" name='d_kind'>B1</option>
+            <option value="B2" name='d_kind'>B2</option>
+            <option value="IE" name='d_kind'>IE</option>
+
+          </select>
+        <br>
+        <input class="form-control" name='d_title' placeholder="{{u_title}}" value="" required>
+        <br>
+        <input class="form-control" name='d_answer' placeholder="{{u_answer}}" value="" required>
+        <br>
+        <button class='btn btn-danger' type="submit">Guncelle</button>
+    </div>
+</form>
+<p></p>
+
+{% endblock body %}

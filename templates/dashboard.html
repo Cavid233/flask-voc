@@ -1,0 +1,105 @@
+{% extends 'index.html' %}
+<p></p>
+{% block title %}
+DoctorSmiling - Control Panel
+{% endblock title %}
+{% block body %}
+
+<h1>Welcome to Control Panel</h1>
+<small >Good Day {{session['username']}}. You can choose one of them:
+<a href="/dashboard" style='padding:0px 13px 0px 13px'>
+    <h5  style="display:inline-block;color:#cc66ff"   data-toggle="tooltip" data-placement="bottom"  data-html="true" title="ALL">
+     ALL
+    </h5>
+</a>
+<a href="/filter/A1" style='padding-right:13px'>
+    <h5  style="display:inline-block" class='text-success' data-toggle="tooltip" data-placement="bottom"  data-html="true" title="Only A1">
+     A1
+    </h5>
+</a>
+
+<a href="/filter/A2" style='padding-right:13px'>
+ <h5 style="display:inline-block" class="text-warning" data-toggle="tooltip" data-placement="bottom"  data-html="true" title="Only A2">A2</h5>
+ </a>
+
+ <a href="/filter/B1" style='padding-right:13px'>
+ <h5 style="display:inline-block" class="text-danger" data-toggle="tooltip" data-placement="bottom"  data-html="true" title="Only B1">B1</h5>
+ </a>
+
+ <a href="/filter/B2" style='padding-right:13px'> 
+ <h5 style="display:inline-block" class="text-secondary" data-toggle="tooltip" data-placement="bottom"  data-html="true" title="Only B2">B2</h5>
+ </a>
+
+ <a href="/filter/IE" style='padding-right:10px' data-toggle="tooltip" data-placement="bottom"  data-html="true" title="Only IE">
+ <h5 style="display:inline-block" class="text-info">IE</h5>
+ </a>
+
+   </small>
+<hr>
+<form class="form-inline md-form mr-auto mb-4 pl-3" action="/search" method="POST">
+    <input class="form-control mr-sm-2" type="text" name='keyword' placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-warning btn-rounded  my-0" type="submit">Search</button>
+</form>
+<p></p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col" >
+                English Level
+            </th>
+            <th scope="col">Title</th>
+            <th scope="col">Answer</th>
+            <th scope="col"></th>
+            {% if session['username'] == 'everyone' %}
+            <th scope="col"></th>
+            {%else%}
+
+            {% endif %}
+
+        </tr>
+    </thead>
+    <tbody>
+
+        {% if artus %} {% for artu in artus %}
+        <tr>
+            <th scope="row"> {{ loop.index0+1 }} </th>
+
+            <td>{{artu.kind}}</td>
+            <td><a href="/go_1/{{artu.title}}/{{artu.kind}}">{{artu.title}}</a></td>
+            <td>{{artu.answer}}</td>
+            <td><a href="/go_1/{{artu.title}}/{{artu.kind}}" class='btn btn-danger'>TRY</a></td>
+
+            {% if session['username'] == artu.author %}
+            <td><a href="/update/{{artu.kind}}/{{artu.id}}" class='btn btn-danger'>Update</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% elif mars%} {% for mar in mars %}
+<tr>
+    <th scope="row"> {{ loop.index0+1 }} </th>
+    <td>{{mar.kind}}</td>
+    <td><a href="/go_1/{{mar.title}}/{{mar.kind}}">{{mar.title}}</a></td>
+    <td>{{mar.answer}}</td>
+    <td><a href="/go_1/{{mar.title}}/{{mar.kind}}" class='btn btn-danger'>TRY</a></td>
+
+    {% if session['username'] == 'everyone' %}
+    <td><a href="/update/{{mar.kind}}/{{mar.id}}" class='btn btn-danger'>Update</a></td>
+    {% endif %}
+
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+
+
+
+{% else %}
+<div class="alert alert-danger">Henuz makaleniz bulunmuyor</div>
+
+{% endif %}
+<p></p>
+{% endblock body %}

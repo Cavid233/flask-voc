@@ -1,0 +1,153 @@
+{% if session['username'] %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="/"><i class="fas fa-home ">
+                Home
+                </i></a>
+            </li>
+            <div class="dropdown-divider"></div>
+
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="/dashboard">
+                <i class="fas fa-wrench ">
+                    Control Panel
+                </i></a>
+            </li>
+            <div class="dropdown-divider"></div>
+            {% if session['username'] == 'everyone' %}
+
+            <li class="nav-item">
+                <a class="nav-link" href="/create">Create</a>
+            </li>
+            {% endif %}
+            <div class="dropdown-divider"></div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {% if session['kind'] == 'A1' %}
+                        A1 
+                    {% elif session['kind'] == 'A2' %}
+                        A2
+                    {% elif session['kind'] == 'B1' %}
+                        B1
+                    {% elif session['kind'] == 'B2' %}
+                        B2 
+                    {% else %}
+                        IELTS WORDS  
+                    {% endif %}
+
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/test/{{session['A1_id']}}">A1</a>
+                    <a class="dropdown-item" href="/test_A2/{{session['A2_id']}}">A2</a>
+                    <div class="dropdown-divider "></div>
+                    <a class="dropdown-item" href="/test_B1/{{session['B1_id']}}">B1</a>
+                    <a class="dropdown-item" href="/test_B2/{{session['B2_id']}}">B2</a>
+                    <div class="dropdown-divider "></div>
+                    <a class="dropdown-item" href="/test_IE/{{session['IE_id']}}">IELTS WORDS</a>
+
+                </div>
+            </li>
+
+            <div class="dropdown-divider"></div>
+
+            {% if counts %}
+
+            <li class="nav-item">
+
+                <form class="" action="/find" method="POST">
+                    <a class="nav-link" href="#">
+                        <input class="w-25" type="text" value="{{l_test.id}}" name='keyword'> /{{counts}}
+                    </a>
+                </form>
+            </li>
+
+            {% endif %}
+          
+
+             
+
+            
+          
+        </ul>
+        <div class="dropdown-divider"></div>
+
+        <ul class="navbar-nav ml-auto ">
+
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/out_exclamation">
+                    <i class="fas fa-exclamation text-danger fa-2x">
+                    <h4 style="font-family: 'Dancing Script', cursive;">
+                        -{{session['quantity']}}-
+                    </h4>
+                    </i>
+                </a>
+            </li>
+
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/out_question_circle">
+                    <i class="fas fa-question-circle text-warning fa-2x">
+                        <h4 style="font-family: 'Dancing Script', cursive;">
+                            -{{session['amounts']}}-   
+                        </h4> 
+                    </i>
+                </a>
+            </li>
+
+
+
+            <li class="nav-item ">
+                <a class="nav-link" href="/correct">
+                    <i class="fas fa-check-square text-success fa-2x ">
+                        <h4 style="font-family: 'Dancing Script', cursive;">
+                             -{{session['cors_w']}}-
+
+                        </h4> 
+                    </i>
+                </a>
+            </li>
+
+            &nbsp;
+            <li class="nav-item dropdown">
+
+                <a class="nav-link fas fa-cog text-info" style="cursor:pointer" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+       
+                
+
+                    <a class="dropdown-item  text-danger" href='#'>
+                            
+                            Combo  
+                            <i class="fas fa-fire"></i>
+                            -{{session['correct']}}-
+                            
+                    </a>
+                    <a class="dropdown-item  text-info" href="/logout">
+                        Logout <i class="fas fa-sign-out-alt text-info"></i>
+                    </a>
+
+                </div>
+
+            </li>
+
+
+
+
+        </ul>
+    </div>
+</nav>
+
+{% endif %}

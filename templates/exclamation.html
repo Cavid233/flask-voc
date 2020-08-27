@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% block title %}
+DoctorSmiling -!
+{% endblock title %}
+{% block body %}
+<h1>I don't know: </h1>
+<small>Good Day {{session['username']}}</small>
+
+<hr>
+<form class="form-inline md-form mr-auto mb-4" action="/ex_search" method="POST">
+    <input class="form-control mr-sm-2" type="text" name='ex_keyword' placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-warning btn-rounded  my-0" type="submit">Search</button>
+</form>
+<p></p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">English Level</th>
+            <th scope="col">Title</th>
+            <th scope="col">Answer</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% if infos %} {% for info in infos %}
+        <tr>
+            <th scope="row"> {{ loop.index0+1 }} </th>
+            <td>{{info.kind}}</td>
+            <td><a href="/go_1/{{info.title}}/{{info.kind}}">{{info.title}}</a></td>
+            <td>{{info.answer}}</td>
+            <td><a href="/go_1/{{info.title}}/{{info.kind}}" class='btn btn-danger'>TRY</a></td>
+            <td><a href="/delete_1/{{info.id}}" class='btn btn-danger' >DELETE</a></td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+{% elif posts %} {% for post in posts %}
+<tr>
+    <th scope="row"> {{ loop.index0+1 }} </th>
+    <td>{{post.kind}}</td>
+    <td><a href="/go_1/{{post.title}}/{{post.kind}}">{{post.title}}</a></td>
+    <td>{{post.answer}}</td>
+    <td><a href="/go_1/{{post.title}}/{{post.kind}}" class='btn btn-danger'>TRY</a></td>
+    <td><a href="/delete_1/{{post.id}}" class='btn btn-danger'>DELETE</a></td>
+</tr>
+{% endfor %} {% else %}
+<div class="alert alert-danger">No questions yet</div>
+
+{% endif %}
+<p></p>
+{% endblock body %}

@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% block title %}
+DoctorSmiling - ?
+{% endblock title %}
+<p></p>
+{% block body %}
+<h1>I am not sure: </h1>
+<small>Good Day {{session['username']}}</small>
+
+<hr>
+<form class="form-inline md-form mr-auto mb-4" action="/qu_search" method="POST">
+    <input class="form-control mr-sm-2" type="text" name='qu_keyword' placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-warning btn-rounded  my-0" type="submit">Search</button>
+</form>
+<p></p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">English Level</th>
+            <th scope="col">Title</th>
+            <th scope="col">Answer</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% if onfos %} {% for onfo in onfos %}
+        <tr>
+            <th scope="row"> {{ loop.index0+1 }} </th>
+
+            <td>{{onfo.kind}}</td>
+            <td> <a href="/go_2/{{onfo.title}}/{{onfo.kind}}"> {{onfo.title}} </a></td>
+            <td>{{onfo.answer}}</td>
+            <td><a href="/go_2/{{onfo.title}}/{{onfo.kind}}" class='btn btn-danger'>TRY</a></td>
+            <td><a href="/delete_2/{{onfo.id}}" class='btn btn-danger'>DELETE</a></td>
+
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+{% elif sends%} {% for send in sends %}
+<tr>
+    <th scope="row"> {{ loop.index0+1 }} </th>
+    <td>{{send.kind}}</td>
+    <td><a href="/go_1/{{send.title}}/{{send.kind}}">{{send.title}}</a></td>
+    <td>{{send.answer}}</td>
+    <td><a href="/go_1/{{send.title}}/{{send.kind}}" class='btn btn-danger'>TRY</a></td>
+    <td><a href="/delete_2/{{send.id}}" class='btn btn-danger'>DELETE</a></td>
+</tr>
+{% endfor %} {% else %}
+
+<div class="alert alert-danger">No questions yet</div>
+
+{% endif %}
+<p></p>
+{% endblock body %}

@@ -1,0 +1,164 @@
+.container {
+    padding: 0;
+    width: 100%;
+}
+
+.arxafon {
+    background-color: rgba(238, 238, 238, 0.7);
+    border: 1px solid rgb(172, 172, 172);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    border-top-left-radius: 35px;
+    width: 428px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.sual {
+    font-size: 21px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(172, 172, 172);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+button:focus {
+    outline: none;
+}
+
+.sira {
+    position: absolute;
+    top: -20px;
+    left: -30px;
+    font-size: 30px;
+    font-style: italic;
+    font-family: 'Ma Shan Zheng', cursive;
+    background-color: rgb(255, 255, 255, 0.5);
+    border: 1px solid rgb(172, 172, 172, 0.2);
+    padding: 5px;
+    text-align: center;
+    border-radius: 50%;
+    width: 57px;
+    color: rgb(0, 0, 0, 0.7);
+}
+
+.sira_link {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 1px;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 50%;
+    border: 2px solid rgb(172, 172, 172);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2), 0 0px 1px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sira_link a {
+    color: rgb(0, 0, 0, 0.7);
+    text-decoration: none;
+}
+
+#sira_linkleri {
+    height: 140px;
+    overflow: auto;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#collapse_h2 {
+    font-family: 'Racing Sans One', cursive;
+    color: rgb(0, 0, 0, 0.85);
+}
+
+#asagi {
+    margin-left: 15%;
+}
+
+#bos {
+    margin-left: 0%;
+}
+
+#dogru {
+    margin-left: 13%;
+}
+
+#yanlis {
+    margin-left: 13%;
+}
+
+#bos i {
+    color: rgb(0, 0, 0, 0.7);
+}
+
+#dogru i {
+    color: rgb(0, 128, 0, 0.5);
+}
+
+#yanlis i {
+    color: rgb(255, 0, 0, 0.5);
+}
+
+@media only screen and (max-width: 750px) {
+    .sual {
+        font-size: 18px;
+    }
+    .arxafon {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .sira {
+        font-size: 28px;
+        width: 57px;
+        border-radius: 50%;
+        left: -19px;
+        top: -27px;
+    }
+    #collapse_h2 {
+        font-size: 23px;
+    }
+    #asagi {
+        margin-left: 10%;
+    }
+    #bos {
+        margin-left: 0%;
+    }
+    #dogru {
+        margin-left: 12%;
+    }
+    #yanlis {
+        margin-left: 10%;
+    }
+    #sira_linkleri {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+button:hover {
+    background-color: rgba(51, 50, 50, 0.003);
+}
+
+.var {
+    cursor: pointer;
+}
+
+.nav-link {
+    padding: 2px;
+}
+
+h4 {
+    display: inline;
+}

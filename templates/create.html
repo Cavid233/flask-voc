@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    DoctorSmiling - Create
+{% endblock title %}
+    
+ {% block body %}
+<h3>Create Questions</h3>
+<p></p>
+<p></p>
+<form action="/create" method="POST">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Kind</label>
+        <select id="cars" class="form-control" name='kind'>
+    <option value="A1" name='kind'>A1</option>
+    <option value="A2" name='kind'>A2</option>
+    <option value="B1" name='kind'>B1</option>
+    <option value="B2" name='kind'>B2</option>
+    <option value="IE" name='kind'>IE</option>
+
+  </select>
+        <br>
+        <label for="exampleInputEmail1">Title</label>
+        <input class="form-control" name='title' placeholder="title" required>
+        <br>
+        <label for="exampleInputEmail1">Answer</label>
+        <input class="form-control" name='answer' placeholder="answer" required>
+
+        <br>
+        <button class='btn btn-danger' type="submit">Add</button>
+    </div>
+</form>
+<p></p>
+
+{% endblock body %}
